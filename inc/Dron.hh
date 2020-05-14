@@ -5,7 +5,16 @@
 //
 class Dron
 {
- double katy;
- Wektor3D srodek;
+Figura dron[5];
+public:
+Figura getFigura(int index)
+{
+  return dron[index];
+}
+void setDron();
 };
+//funkcje
+std::ostream& operator<<(std::ostream &Str,Dron Dron);
+
+
 #endif
