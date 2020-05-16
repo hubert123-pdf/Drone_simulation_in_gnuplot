@@ -4,14 +4,14 @@
 
 class Powierzchnia
 {
-    Figura dno[5];
+    Figura fala[10];
 
 public:
 Figura getFigura2(int index)const
 {
-  return dno[index];
+  return fala[index];
 }
-void setPowierzchniaDna();
+void setfale();
 
 };
 std::ostream& operator<<(std::ostream &Str,const Powierzchnia powierzchnia);

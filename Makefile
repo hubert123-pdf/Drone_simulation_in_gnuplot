@@ -8,8 +8,8 @@ TRGDIR=/tmp/rysowanie_3D
 __start__: ./rysowanie_3D
 	./rysowanie_3D
 
-./rysowanie_3D: obj obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o
-	g++ -Wall -pedantic -std=c++11 -o ./rysowanie_3D obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o
+./rysowanie_3D: obj obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o obj/Dno.o
+	g++ -Wall -pedantic -std=c++11 -o ./rysowanie_3D obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o obj/Dno.o
 
 
 obj:
@@ -35,6 +35,9 @@ obj/Wektor3D.o: src/Wektor3D.cpp inc/Wektor3D.hh
 
 obj/Powierzchnia.o: src/Powierzchnia.cpp inc/Powierzchnia.hh inc/Figura.hh
 		g++ -c ${CXXFLAGS} -o obj/Powierzchnia.o src/Powierzchnia.cpp
+
+obj/Dno.o: src/Dno.cpp inc/Dno.hh
+		g++ -c ${CXXFLAGS} -o obj/Dno.o src/Dno.cpp
 
 clean:
 	rm -f obj/*.o ./rysowanie_3D

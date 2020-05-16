@@ -8,23 +8,5 @@ public:
     double x;
     double y;
     double z;
-
-double getx()
-{return x;}
-
-void setx(double wartosc)
-{x=wartosc;}
-
-double gety()
-{return y;}
-
-void sety(double wartosc)
-{y=wartosc;}
-
-double getz()
-{return z;}
-
-void setz(double wartosc)
-{z=wartosc;}
 };
 #endif

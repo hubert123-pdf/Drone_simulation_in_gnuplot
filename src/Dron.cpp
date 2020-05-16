@@ -2,40 +2,51 @@
 
 void Dron::setDron()
 {
-  dron[0].getWierzcholki().push_back({0,-20,40});
-  dron[0].getWierzcholki().push_back({20,-20,80});
-  dron[0].getWierzcholki().push_back({20,20,80});
-  dron[0].getWierzcholki().push_back({0,20,40});
 
-  std::cout<<dron[0].getWierzcholki().size();
+  dron[0].getWierzcholki().push_back({0,-10,0});
+  dron[0].getWierzcholki().push_back({10,-10,10});
+  dron[0].getWierzcholki().push_back({10,10,10});
+  dron[0].getWierzcholki().push_back({0,10,0});
   
-  dron[1].getWierzcholki().push_back({0,-20,40});
-  dron[1].getWierzcholki().push_back({20,-20,0});
-  dron[1].getWierzcholki().push_back({20,20,0});
-  dron[1].getWierzcholki().push_back({0,20,40});
+  dron[1].getWierzcholki().push_back({0,-10,0});
+  dron[1].getWierzcholki().push_back({10,-10,-10});
+  dron[1].getWierzcholki().push_back({10,10,-10});
+  dron[1].getWierzcholki().push_back({0,10,0});
 
-  dron[2].getWierzcholki().push_back({0,-20,40});
-  dron[2].getWierzcholki().push_back({-20,-20,0});
-  dron[2].getWierzcholki().push_back({-20,20,0});
-  dron[2].getWierzcholki().push_back({0,20,40});
+  dron[2].getWierzcholki().push_back({0,-10,0});
+  dron[2].getWierzcholki().push_back({-10,-10,-10});
+  dron[2].getWierzcholki().push_back({-10,10,-10});
+  dron[2].getWierzcholki().push_back({0,10,0});
 
-  dron[3].getWierzcholki().push_back({0,-20,40});
-  dron[3].getWierzcholki().push_back({-20,-20,80});
-  dron[3].getWierzcholki().push_back({-20,20,80});
-  dron[3].getWierzcholki().push_back({0,20,40});
+  dron[3].getWierzcholki().push_back({0,-10,0});
+  dron[3].getWierzcholki().push_back({-10,-10,10});
+  dron[3].getWierzcholki().push_back({-10,10,10});
+  dron[3].getWierzcholki().push_back({0,10,0});
 
-  dron[4].getWierzcholki().push_back({0,-20,40});
-  dron[4].getWierzcholki().push_back({20,-20,80});
-  dron[4].getWierzcholki().push_back({20,20,80});
-  dron[4].getWierzcholki().push_back({0,20,40});
+  dron[4].getWierzcholki().push_back({0,-10,0});
+  dron[4].getWierzcholki().push_back({10,-10,10});
+  dron[4].getWierzcholki().push_back({10,10,10});
+  dron[4].getWierzcholki().push_back({0,10,0});
 }
 
-
+void Dron::setMacierzObrotu(double alfa)
+{
+  MacierzObrotu[0]={cos(alfa*M_PI/180),sin(alfa*M_PI/180),0};
+  MacierzObrotu[1]={-sin(alfa*M_PI/180),cos(alfa*M_PI/180),0};
+  MacierzObrotu[2]={0,0,1};
+}
 std::ostream& operator<<(std::ostream &Str,Dron Dron)
 {
     for(int i=0;i<5;i++)
     {
-       Str<<Dron.getFigura(i);
+       Str<<Dron.getFigura(i)<<"#\n\n";
     }
     return Str;
+}
+double operator*(Wektor3D Wek1,Wektor3D Wek2)
+{
+ double Wynik;
+ Wynik=Wek1.x*Wek2.x+Wek1.y*Wek2.y+Wek1.z*Wek2.z;
+
+   return Wynik;
 }
