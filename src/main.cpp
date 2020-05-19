@@ -29,12 +29,14 @@ int main()
 {
     cin>>tmp;
     if(tmp=='r')
-    continue;//zadajRuch();
+    {
+    zadajRuch(Podwodniak);
+    aktualizujScene();
+    }
 
     if(tmp=='o')
     {
     zmianaOrientacji(Podwodniak);
-    StworzScene();
     }
 
     if(tmp=='m')

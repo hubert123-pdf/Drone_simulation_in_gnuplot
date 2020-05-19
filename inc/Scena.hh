@@ -14,6 +14,8 @@ void otwarcie_pliku_dron(Dron Podwodniak);
 void otwarcie_pliku_fala(Powierzchnia Fala);
 void otwarcie_pliku_dno(Dno Dno);
 void StworzScene();
+void aktualizujScene();
 void zmianaOrientacji(Dron &Dron);
+void zadajRuch(Dron &Dron);
 
 #endif 
