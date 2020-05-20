@@ -1,0 +1,9 @@
+<map id="Dron::setRuchDronaz" name="Dron::setRuchDronaz">
+<area shape="rect" id="node2" href="$class_figura.html#a4166bb9d94a1f7473cc6ab07da99df0e" title="Figura::getWierzcholki" alt="" coords="444,14,596,40"/>
+<area shape="rect" id="node3" href="$class_dron.html#ab90a62e7d189f5a82c85bbf8ec0097b4" title="Dron::setDron" alt="" coords="247,39,351,66"/>
+<area shape="rect" id="node4" href="$class_dron.html#ac6a462ee79d35a106c4233d76d6a8d7e" title="Dron::setMacierzObrotu" alt="" coords="219,90,380,116"/>
+<area shape="rect" id="node5" href="$class_dron.html#a0a7108dfa366d5f9276f161f9d933d53" title="Dron::setWektorPrzesuniecia" alt="" coords="203,140,396,167"/>
+<area shape="rect" id="node6" href="$_dron_8hh.html#a5983a84ced237f90fe40092e41bd6564" title="operator\&lt;\&lt;" alt="" coords="257,191,342,218"/>
+<area shape="rect" id="node8" href="$_dron_8hh.html#a8d34f3ef3befac1a2035affc0088a9eb" title="operator*" alt="" coords="262,242,337,268"/>
+<area shape="rect" id="node7" href="$class_dron.html#a6d379016892d17b9c2a6e80d0dc8969b" title="Dron::getFigura" alt="" coords="464,191,576,218"/>
+</map>
