@@ -38,44 +38,55 @@ void otwarcie_pliku_dno(Dno Dno)
 }
 void zmianaOrientacji(Dron &Dron)
 {
+  double a,b,c;
   double x;
   std::cout<<std::endl<<"Podaj wartosc kata obrotu w stopniach: ";
   std::cin>>x;
+  Dron.setDron0();
   Dron.setMacierzObrotu(x);
   for(int i=0;i<5;i++)
   {
-    for(int j=0;j<4;j++)
-    {
-      double a,b,c;
-      a=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(0);
-      b=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(1);
-      c=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(2);
-    Dron.setRuchDronax(i,j,a);
-    Dron.setRuchDronay(i,j,b);
-    Dron.setRuchDronaz(i,j,c);      
-    }
-  }
+  for(int j=0;j<4;j++)
+  { 
+      a=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(0)+Dron.getWektorPrzemieszczenia().x;
+      b=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(1)+Dron.getWektorPrzemieszczenia().y;
+      c=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(2)+Dron.getWektorPrzemieszczenia().z;
+      Dron.setRuchDronax(i,j,a);
+      Dron.setRuchDronay(i,j,b);
+      Dron.setRuchDronaz(i,j,c);
 otwarcie_pliku_dron(Dron);
-}
-
+aktualizujScene(); 
+  }
+  }
+  }
 void zadajRuch(Dron &Dron)
 {
-  double kat,odl;
-  std::cout<<std::endl<<"Podaj wartosc kata (wznoszenia/opadania) w stopniach. ";
-  std::cin>>kat;
-  std::cout<<std::endl<<"Podaj wartosc odleglosci, na ktora ma sie przemiescic dron. ";
-  std::cin>>odl;
-  Dron.setWektorPrzesuniecia(odl,kat);
+  double a,b,c;
+  std::cout<<std::endl<<"Podaj wartosc przesuniecia w płaszczyznie x ";
+  std::cin>>a;
+  std::cout<<std::endl<<"Podaj wartosc przesuniecia w plaszczyznie y ";
+  std::cin>>b;
+  std::cout<<std::endl<<"Podaj wartosc przesuniecia w plaszczyznie z ";
+  std::cin>>c;
+
+  Dron.setWektorPrzesuniecia(a,b,c);
+  Dron.setWektorPrzemieszczenia();
   for(int i=0;i<5;i++)
   {
     for(int j=0;j<4;j++)
     {
-    Dron.setRuchDronax(i,j,Dron.getFigura(i).getWierzcholki(j).x+Dron.getWektorPrzesuniecia().x);
-    Dron.setRuchDronaz(i,j,Dron.getFigura(i).getWierzcholki(j).z+Dron.getWektorPrzesuniecia().z);
-
+    double a,b;
+    a=Dron.getFigura(i).getWierzcholki(j).x+Dron.getWektorPrzesuniecia().x;
+    b=Dron.getFigura(i).getWierzcholki(j).y+Dron.getWektorPrzesuniecia().y;
+    c=Dron.getFigura(i).getWierzcholki(j).z+Dron.getWektorPrzesuniecia().z;
+    Dron.setRuchDronax(i,j,a);
+    Dron.setRuchDronay(i,j,b);
+    Dron.setRuchDronaz(i,j,c);
+    
     }
   }
-  otwarcie_pliku_dron(Dron);
+otwarcie_pliku_dron(Dron);
+aktualizujScene(); 
 }
 
 void StworzScene()
@@ -102,6 +113,26 @@ void aktualizujScene()
   Lacze.UstawZakresY(-50, 100);
   Lacze.UstawZakresZ(-100, 100);
   Lacze.UstawRotacjeXZ(69,24); // Tutaj ustawiany jest widok
+       // Teraz powinno pojawic sie okienko gnuplota                      // z rysunkiem, o ile istnieje plik "prostopadloscian1.dat
         // Teraz powinno pojawic sie okienko gnuplota 
-  Lacze.UsunWszystkieNazwyPlikow();
+}
+bool sprawdzkolizja1faza(Dron Dron)
+{
+for(int i=0;i<5;i++)
+  {
+    for(int j=0;j<4;j++)
+    {
+      if(Dron[i][j].z>=100)
+      {
+        std::cout<<std::endl<<"Dron wypłynął na powierzchnie";
+        return true;
+      }
+      if(Dron[i][j].z<=-100)
+      {
+       std::cout<<std::endl<<"Dron uderzył w dno";
+       return true;
+      }
+    }
+  }
+  return false;
 }

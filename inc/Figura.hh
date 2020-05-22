@@ -8,6 +8,12 @@ class Figura
 {
  std::vector<Wektor3D> wierzcholki;
 public:
+
+Wektor3D operator[](int index)
+{
+  return wierzcholki[index];
+}
+
 Wektor3D &getWierzcholki(int i)
 {
     return wierzcholki[i];

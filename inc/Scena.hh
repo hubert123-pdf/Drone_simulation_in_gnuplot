@@ -7,6 +7,8 @@
 #include "Powierzchnia.hh"
 #include <iomanip>
 #include <fstream>
+#include <unistd.h>
+
 
 
 
@@ -17,5 +19,5 @@ void StworzScene();
 void aktualizujScene();
 void zmianaOrientacji(Dron &Dron);
 void zadajRuch(Dron &Dron);
-
+bool sprawdzkolizja1faza(Dron Dron);
 #endif 

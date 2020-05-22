@@ -31,7 +31,8 @@ int main()
     if(tmp=='r')
     {
     zadajRuch(Podwodniak);
-    aktualizujScene();
+    if(sprawdzkolizja1faza(Podwodniak))
+    break;
     }
 
     if(tmp=='o')
