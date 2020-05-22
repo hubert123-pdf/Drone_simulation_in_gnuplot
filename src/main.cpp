@@ -7,6 +7,7 @@
 #include "Dno.hh"
 
 using namespace std;
+
 void WyswietlMenu();
 
 int main()
@@ -15,11 +16,14 @@ int main()
  Dno Dno;
  Powierzchnia Fala;
  Dron Podwodniak;
+ Przeszkody Obiekty;
 
+ Obiekty.setPrzeszkody();
  Podwodniak.setDron();
  Fala.setfale();
  Dno.setDno();
-
+ 
+ otwarcie_plikow_przeszkod(Obiekty);
  otwarcie_pliku_dron(Podwodniak);
  otwarcie_pliku_fala(Fala);
  otwarcie_pliku_dno(Dno);

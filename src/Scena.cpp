@@ -36,6 +36,42 @@ void otwarcie_pliku_dno(Dno Dno)
       std::cout<<"nie udało się"<<std::endl;
       plik.close();
 }
+void otwarcie_plikow_przeszkod(Przeszkody przeszkody)
+{
+
+//Pierwszy pręt
+std::fstream plik1;
+plik1.open("bryly/pret1.dat",std::ios::out );
+if(plik1.good()==true)
+{
+  plik1<<przeszkody.getPret1();
+}
+else
+std::cout<<"nie udało się"<<std::endl;
+plik1.close();
+
+//Drugi pręt
+std::fstream plik2;
+plik2.open("bryly/pret2.dat",std::ios::out );
+if(plik2.good()==true)
+{
+  plik2<<przeszkody.getPret2();
+}
+else
+std::cout<<"nie udało się"<<std::endl;
+plik2.close();
+
+//Pierwszy Blok
+std::fstream plik3;
+plik3.open("bryly/blok1.dat",std::ios::out );
+if(plik3.good()==true)
+{
+  plik3<<przeszkody;
+}
+else
+std::cout<<"nie udało się"<<std::endl;
+plik3.close();
+}
 void zmianaOrientacji(Dron &Dron)
 {
   double a,b,c;
@@ -82,7 +118,6 @@ void zadajRuch(Dron &Dron)
     Dron.setRuchDronax(i,j,a);
     Dron.setRuchDronay(i,j,b);
     Dron.setRuchDronaz(i,j,c);
-    
     }
   }
 otwarcie_pliku_dron(Dron);
@@ -95,6 +130,9 @@ void StworzScene()
   Lacze.DodajNazwePliku("bryly/dron.dat");
   Lacze.DodajNazwePliku("bryly/fala.dat");
   Lacze.DodajNazwePliku("bryly/dno.dat");
+  Lacze.DodajNazwePliku("bryly/pret1.dat");
+  Lacze.DodajNazwePliku("bryly/pret2.dat");
+  Lacze.DodajNazwePliku("bryly/blok1.dat");
   Lacze.ZmienTrybRys(PzG::TR_3D);
   Lacze.Inicjalizuj();  // Tutaj startuje gnuplot.
   Lacze.UstawZakresX(-50, 100);
@@ -113,7 +151,8 @@ void aktualizujScene()
   Lacze.UstawZakresY(-50, 100);
   Lacze.UstawZakresZ(-100, 100);
   Lacze.UstawRotacjeXZ(69,24); // Tutaj ustawiany jest widok
-       // Teraz powinno pojawic sie okienko gnuplota                      // z rysunkiem, o ile istnieje plik "prostopadloscian1.dat
+       // Teraz powinno pojawic sie okienko gnuplota                      
+       // z rysunkiem, o ile istnieje plik "prostopadloscian1.dat
         // Teraz powinno pojawic sie okienko gnuplota 
 }
 bool sprawdzkolizja1faza(Dron Dron)

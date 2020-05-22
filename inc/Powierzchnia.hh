@@ -4,7 +4,7 @@
 
 class Powierzchnia
 {
-    Figura fala[10];
+  Figura fala[10];
 
 public:
 Figura getFigura2(int index)const

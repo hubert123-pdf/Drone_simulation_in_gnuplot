@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <fstream>
 #include <unistd.h>
+#include "przeszkody.hh"
 
 
 
@@ -20,4 +21,5 @@ void aktualizujScene();
 void zmianaOrientacji(Dron &Dron);
 void zadajRuch(Dron &Dron);
 bool sprawdzkolizja1faza(Dron Dron);
+void otwarcie_plikow_przeszkod(Przeszkody przeszkody);
 #endif 
