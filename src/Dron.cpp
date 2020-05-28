@@ -88,9 +88,15 @@ void Dron::setMacierzObrotu(double alfa)
   MacierzObrotu[1]={sin(alfa*PI/180),cos(alfa*PI/180),0};
   MacierzObrotu[2]={0,0,1};
 }
-void Dron::setWektorPrzesuniecia(double a,double b,double c)
+void Dron::setMacierzObrotu0()
 {
-  WektorPrzesuniecia={a,b,c};
+  MacierzObrotu[0]={cos(0),-sin(0),0};
+  MacierzObrotu[1]={sin(0),cos(0),0};
+  MacierzObrotu[2]={0,0,1};
+}
+void Dron::setWektorPrzesuniecia(double a)
+{
+  WektorPrzesuniecia={a,0,0};
 }
 void Dron::setWektorPrzemieszczenia()
 {
@@ -114,4 +120,29 @@ std::ostream& operator<<(std::ostream &Str,Dron Dron)
     }
     return Str;
 }
+void zmianaOrientacji(Dron &Dron)
+{
+  double a,b,c;
+  double x;
+  std::cout<<std::endl<<"Podaj wartosc kata obrotu w stopniach: ";
+  std::cin>>x;
+  //Dron.setDron0();
+  Dron.setMacierzObrotu(x+Dron.getKatPrzesuniecia());
+  for(int i=0;i<5;i++)
+  {
+  for(int j=0;j<4;j++)
+  { 
+    Dron.setRuchDronax(i,j,Dron.getFigura(i).getWierzcholki(j).x-Dron.getWektorPrzemieszczenia().x);
+    Dron.setRuchDronay(i,j,Dron.getFigura(i).getWierzcholki(j).y-Dron.getWektorPrzemieszczenia().y);
+    Dron.setRuchDronaz(i,j,Dron.getFigura(i).getWierzcholki(j).z-Dron.getWektorPrzemieszczenia().z);
 
+    a=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(0)+Dron.getWektorPrzemieszczenia().x;
+    b=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(1)+Dron.getWektorPrzemieszczenia().y;
+    c=Dron.getFigura(i).getWierzcholki(j)*Dron.getMacierzObrotu(2)+Dron.getWektorPrzemieszczenia().z;
+    Dron.setRuchDronax(i,j,a);
+    Dron.setRuchDronay(i,j,b);
+    Dron.setRuchDronaz(i,j,c);
+  }
+  }
+  Dron.setKatPrzesuniecia(x+Dron.getKatPrzesuniecia());
+  }

@@ -67,7 +67,7 @@ namespace PzG {
 
  LaczeDoGNUPlota::LaczeDoGNUPlota() 
  { 
-   _PokazOs_OX = _PokazOs_OY = _PokazOs_OZ = true;
+   _PokazOs_OX = _PokazOs_OY = _PokazOs_OZ = false;
 
    _TrybRys = TR_2D;
    WyswietlajKomunikatyBledow();

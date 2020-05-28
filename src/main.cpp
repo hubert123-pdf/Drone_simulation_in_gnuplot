@@ -5,13 +5,76 @@
 #include "Scena.hh"
 #include "Figura.hh"
 #include "Dno.hh"
-
+#include <vector>
+#define PI 3.14159265
 using namespace std;
 
 void WyswietlMenu();
 
+class FiguraGeometryczna
+{
+public:
+ double ObliczPolePowierzchni();
+ string zwrocNazwe();
+};
+
+
+class Prostokat:public FiguraGeometryczna
+{
+
+    public:
+double bok1;
+double bok2;
+double ObliczPolePowierzchni()
+{
+    return bok1*bok2;
+}
+ string zwrocNazwe()
+ {
+     return "Prostokat";
+ }
+};
+
+
+class Kolo :public FiguraGeometryczna
+{
+public:
+double promien;
+double ObliczPolePowierzchni()
+{
+    return PI*promien*promien;
+}
+ string zwrocNazwe()
+ {
+     return "Kolo";
+ }
+};
+
 int main()
 {
+ vector<Kolo> kola;
+ vector<Prostokat> prostokaty;
+
+ kola.push_back(2,3);
+ prostokaty.push_back({2,3},{5,6});
+
+for(int i=0;i<kola.size();i++)
+{
+    cout<<i<<kola[i].zwrocNazwe();
+    cout<<"Pole :"<<kola[i].ObliczPolePowierzchni();
+    cout<<endl;
+}
+
+cout<<endl;
+
+for(int i=0;i<prostokaty.size();i++)
+{
+    cout<<i<<prostokaty[i].ObliczPolePowierzchni();
+    cout<<"Pole: "<<prostokaty[i].zwrocNazwe();
+    cout<<endl;
+}
+
+    /*
  char tmp;
  Dno Dno;
  Powierzchnia Fala;
@@ -20,6 +83,7 @@ int main()
 
  Obiekty.setPrzeszkody();
  Podwodniak.setDron();
+ Podwodniak.setMacierzObrotu0();
  Fala.setfale();
  Dno.setDno();
  
@@ -35,6 +99,7 @@ int main()
     if(tmp=='r')
     {
     zadajRuch(Podwodniak);
+    aktualizujScene(Podwodniak);
     if(sprawdzkolizja1faza(Podwodniak))
     break;
     }
@@ -42,6 +107,7 @@ int main()
     if(tmp=='o')
     {
     zmianaOrientacji(Podwodniak);
+    aktualizujScene(Podwodniak);
     }
 
     if(tmp=='m')
@@ -63,4 +129,6 @@ cout<<endl<<endl<<"r-zadaj ruch na wprost"<<endl
  <<"o-zadaj zmiane orientacji"<<endl
  <<"m-wyswietl menu"<<endl<<endl
  <<"k-koniec działania programu"<<endl;
+ */
+ 
 }
