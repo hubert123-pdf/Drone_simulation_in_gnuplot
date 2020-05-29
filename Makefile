@@ -8,8 +8,8 @@ TRGDIR=/tmp/rysowanie_3D
 __start__: ./rysowanie_3D
 	./rysowanie_3D
 
-./rysowanie_3D: obj obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o obj/Dno.o
-	g++ -Wall -pedantic -std=c++11 -o ./rysowanie_3D obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o obj/Dno.o
+./rysowanie_3D: obj obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o obj/Dno.o obj/Przeszkody.o
+	g++ -Wall -pedantic -std=c++11 -o ./rysowanie_3D obj/main.o obj/lacze_do_gnuplota.o obj/Scena.o obj/Dron.o obj/Figura.o obj/Wektor3D.o obj/Powierzchnia.o obj/Dno.o obj/Przeszkody.o
 
 
 obj:
@@ -38,6 +38,9 @@ obj/Powierzchnia.o: src/Powierzchnia.cpp inc/Powierzchnia.hh inc/Figura.hh
 
 obj/Dno.o: src/Dno.cpp inc/Dno.hh
 		g++ -c ${CXXFLAGS} -o obj/Dno.o src/Dno.cpp
+
+obj/Przeszkody.o: src/przeszkody.cpp inc/przeszkody.hh
+		g++ -c ${CXXFLAGS} -o obj/Przeszkody.o src/przeszkody.cpp
 
 clean:
 	rm -f obj/*.o ./rysowanie_3D
