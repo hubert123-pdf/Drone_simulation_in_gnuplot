@@ -5,6 +5,9 @@
 class Wektor3D
 {
 public:
+/*
+* 3 wartości odwzorowujące wartości na każdej osi
+*/
     double x;
     double y;
     double z;

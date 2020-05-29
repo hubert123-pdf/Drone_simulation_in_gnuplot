@@ -12,14 +12,23 @@
 
 
 
-
-void otwarcie_pliku_dron(Dron Podwodniak);
+/*
+* funkcje wypisujące wartości wierzchołków do plików .dat
+*/
+void otwarcie_pliku_dron(Dron Dron);
 void otwarcie_pliku_fala(Powierzchnia Fala);
 void otwarcie_pliku_dno(Dno Dno);
-void StworzScene();
-void aktualizujScene();
-void zmianaOrientacji(Dron &Dron);
-void zadajRuch(Dron &Dron);
-bool sprawdzkolizja1faza(Dron Dron);
 void otwarcie_plikow_przeszkod(Przeszkody przeszkody);
+
+/*
+* Stworzenie sceny wraz z przeszkodami
+*/
+void StworzScene();
+/*
+* zmiana położenia drona po każdym wykonanym ruchu
+*/
+void aktualizujScene();
+bool sprawdzkolizja1faza(Dron Dron);
+
+
 #endif 
