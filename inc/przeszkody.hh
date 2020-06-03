@@ -17,6 +17,7 @@ class Przeszkody:public Figura
     Figura sciana[2];
 
 public:
+Przeszkody():Figura(){}
 /*
 * Dostęp do pierwszego pręta
 */

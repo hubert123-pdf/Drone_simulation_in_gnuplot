@@ -5,7 +5,7 @@
 #define PI 3.14159265
 
 
-class Dron
+class Dron:public Figura
 {
 /*
 * elementy Klasy Dron:
@@ -15,7 +15,7 @@ class Dron
 * -Kat przesuniecia dla osi x i y
 * -Kat przesuniecia dla osi z 
 */
-Figura dron[5];
+Figura dron[19];
 Wektor3D MacierzObrotu[3];
 
 Wektor3D WektorPrzemieszczenia={0,0,0};
@@ -25,6 +25,7 @@ double kat2D=0;
 double kat3D=0;
 
 public:
+Dron():Figura(){}
 /*
 *operator łątwiejszego dostępu do wierzcholków
 */
@@ -76,7 +77,7 @@ void setWektorPrzemieszczenia();
 /*
 * Modół dostępu do kata dla osi x i y
 */
-double getKat2D()
+double getKat2D()const
 {
   return kat2D;
 }
@@ -90,7 +91,7 @@ void setKat2D(double wartosc)
 /*
 * Modół dostępu do kata dla osi z
 */
-double getKat3D()
+double getKat3D()const
 {
   return kat3D;
 }
@@ -99,7 +100,7 @@ double getKat3D()
 */
 void setKat3D(double wartosc)
 {
-  kat3D+=wartosc;
+  this->kat3D+=wartosc;
 }
 /*
 * Ustawienie wszystkich wiercholków Drona
@@ -130,6 +131,14 @@ void setRuchDronaz(int index,int index2,double wartosc)
 * Ustawienie drona do położenia początkowego
 */
 void setDron0();
+
+void PrzesunDrona();
+void obrocDrona();
+
+bool CzyKolizja()
+{
+return true;
+}
 };
 
 /*

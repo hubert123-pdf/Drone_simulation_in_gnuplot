@@ -2,7 +2,7 @@
 #define POWIERZCHNIA_HH
 #include "Figura.hh"
 
-class Powierzchnia
+class Powierzchnia:public Figura
 {
 /*
 * tablica wierzcholków imitująca fale
@@ -10,6 +10,7 @@ class Powierzchnia
   Figura fala[10];
 
 public:
+Powierzchnia():Figura(){}
 /*
 * modół dostępu do wierchołków fali
 */

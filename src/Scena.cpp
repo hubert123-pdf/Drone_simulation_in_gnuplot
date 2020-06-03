@@ -73,33 +73,38 @@ std::cout<<"nie udało się"<<std::endl;
 plik3.close();
 }
 
-void StworzScene()
+void Scena::StworzScene()
 {
-  PzG::LaczeDoGNUPlota  Lacze;
   Lacze.DodajNazwePliku("bryly/dron.dat");
   Lacze.DodajNazwePliku("bryly/fala.dat");
   Lacze.DodajNazwePliku("bryly/dno.dat");
   Lacze.DodajNazwePliku("bryly/pret1.dat");
   Lacze.DodajNazwePliku("bryly/pret2.dat");
-  Lacze.DodajNazwePliku("bryly/blok1.dat");
+  Lacze.DodajNazwePliku("bryly/bloki.dat");
+  //Lacze.DodajNazwePliku("bryly/sruba2.dat");
+  //Lacze.DodajNazwePliku("bryly/sruba1.dat");
   Lacze.ZmienTrybRys(PzG::TR_3D);
   Lacze.Inicjalizuj(); 
   Lacze.UstawZakresX(-50, 100);
   Lacze.UstawZakresY(-50, 100);
   Lacze.UstawZakresZ(-100, 100);
-  Lacze.UstawRotacjeXZ(69,24);
-  Lacze.Rysuj();       
-  Lacze.UsunWszystkieNazwyPlikow();
+  Lacze.UstawRotacjeXZ(79,296);
+  Lacze.Rysuj(); 
+  Lacze.UsunWszystkieNazwyPlikow();      
+
 }
-void aktualizujScene()
+void Scena::aktualizujScene()
 {  
-  PzG::LaczeDoGNUPlota  Lacze;
   Lacze.DodajNazwePliku("bryly/dron.dat");
-  Lacze.Inicjalizuj();  
-  Lacze.UstawZakresX(-50, 100);
-  Lacze.UstawZakresY(-50, 100);
-  Lacze.UstawZakresZ(-100, 100);
-  Lacze.UstawRotacjeXZ(69,24); 
+  Lacze.DodajNazwePliku("bryly/fala.dat");
+  Lacze.DodajNazwePliku("bryly/dno.dat");
+  Lacze.DodajNazwePliku("bryly/pret1.dat");
+  Lacze.DodajNazwePliku("bryly/pret2.dat");
+  Lacze.DodajNazwePliku("bryly/bloki.dat");
+ // Lacze.DodajNazwePliku("bryly/graniastoslup-osX.dat");
+  Lacze.ZmienTrybRys(PzG::TR_3D);
+  Lacze.Rysuj();  
+  Lacze.UsunWszystkieNazwyPlikow();
 }
 bool sprawdzkolizja1faza(Dron Dron)
 {

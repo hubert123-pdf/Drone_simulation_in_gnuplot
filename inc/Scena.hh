@@ -11,7 +11,20 @@
 #include "przeszkody.hh"
 
 
+class Scena
+{
+PzG::LaczeDoGNUPlota  Lacze;
+    public:
 
+/*
+* Stworzenie sceny wraz z przeszkodami
+*/
+    void StworzScene();
+/*
+* zmiana położenia drona po każdym wykonanym ruchu
+*/
+    void aktualizujScene();
+};
 /*
 * funkcje wypisujące wartości wierzchołków do plików .dat
 */
@@ -20,14 +33,10 @@ void otwarcie_pliku_fala(Powierzchnia Fala);
 void otwarcie_pliku_dno(Dno Dno);
 void otwarcie_plikow_przeszkod(Przeszkody przeszkody);
 
+
 /*
-* Stworzenie sceny wraz z przeszkodami
+* sprawdzenie kolizji z dnem i wypłynięcie drona 
 */
-void StworzScene();
-/*
-* zmiana położenia drona po każdym wykonanym ruchu
-*/
-void aktualizujScene();
 bool sprawdzkolizja1faza(Dron Dron);
 
 
