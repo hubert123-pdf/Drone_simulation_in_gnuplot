@@ -100,3 +100,14 @@ std::ostream& operator<<(std::ostream &Str,const Dno dno)
     }
     return Str;
 }
+bool Dno::CzyKolizja(Figura Fig)
+{
+    for(int i=0;i<Fig.getSize();i++)
+    {
+    if(Fig[i].z<=-100)
+    {
+        return true;
+    }
+    }
+return false;
+}

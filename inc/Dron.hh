@@ -1,11 +1,11 @@
 #ifndef DRON_HH
 #define DRON_HH
 #include "Figura.hh"
-
+#include "przeszkody.hh"
 #define PI 3.14159265
 
 
-class Dron
+class Dron:public Figura
 {
 /*
 * elementy Klasy Dron:
@@ -15,16 +15,25 @@ class Dron
 * -Kat przesuniecia dla osi x i y
 * -Kat przesuniecia dla osi z 
 */
-Figura dron[5];
+Figura dron[19];
 Wektor3D MacierzObrotu[3];
 
 Wektor3D WektorPrzemieszczenia={0,0,0};
 Wektor3D WektorPrzesuniecia;
 
 double kat2D=0;
-double kat3D=0;
+double kat3D;
 
 public:
+/*
+* metoda zwracająca wartość promienia drona 
+*/
+double promienDrona()
+{
+  double R;
+  return R=10*sqrt(2);
+}
+Dron():Figura(){}
 /*
 *operator łątwiejszego dostępu do wierzcholków
 */
@@ -76,7 +85,7 @@ void setWektorPrzemieszczenia();
 /*
 * Modół dostępu do kata dla osi x i y
 */
-double getKat2D()
+double getKat2D()const
 {
   return kat2D;
 }
@@ -90,7 +99,7 @@ void setKat2D(double wartosc)
 /*
 * Modół dostępu do kata dla osi z
 */
-double getKat3D()
+double getKat3D()const
 {
   return kat3D;
 }
@@ -99,7 +108,7 @@ double getKat3D()
 */
 void setKat3D(double wartosc)
 {
-  kat3D+=wartosc;
+  this->kat3D+=wartosc;
 }
 /*
 * Ustawienie wszystkich wiercholków Drona
@@ -130,6 +139,19 @@ void setRuchDronaz(int index,int index2,double wartosc)
 * Ustawienie drona do położenia początkowego
 */
 void setDron0();
+/*
+* metda ustawiająca wartości do przsuniecia drona
+*/
+void PrzesunDrona();
+/*
+* metoda ustawiająca wartośći do obrotu drona
+*/
+void obrocDrona();
+/*
+* metoda badająca czy zachodzi kolizja między przeszkodami
+*/
+bool CzyKolizja(Figura Fig);
+
 };
 
 /*
@@ -148,6 +170,8 @@ void zmianaOrientacji(Dron &Dron);
 * Funkcja wykonująca Ruch Drona
 */
 void zadajRuch(Dron& Dron);
-
-
+/*
+* Funkcja ustawiająca drona w odległości od przeszkody umożliwiającej cofnięcie
+*/
+void ZatrzymajDrona(Dron &Dron);
 #endif

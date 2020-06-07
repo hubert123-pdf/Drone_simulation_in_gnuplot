@@ -1,13 +1,14 @@
 #ifndef Dno_HH
 #define Dno_HH
 #include "Figura.hh"
-class Dno
+class Dno:public Figura
 {
 /*
 * Tablica wierzchołków imitująca dno 
 */
 Figura dno[10];
 public:
+Dno():Figura(){}
 /*
 * Modół dostepu do Wierzchiłków dna
 */
@@ -19,6 +20,10 @@ Figura getFigura(int index)const
 * Modół ustawiający dno 
 */
 void setDno();
+/*
+* Metoda badająca czy zaszła kolizja drona z dnem 
+*/
+bool CzyKolizja(Figura Fig);
 };
 /*
 * Operator wypisujący dla klasy Dno

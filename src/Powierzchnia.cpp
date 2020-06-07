@@ -101,3 +101,14 @@ std::ostream& operator<<(std::ostream &Str,const Powierzchnia powierzchnia)
     }
     return Str;
 }
+bool Powierzchnia::CzyKolizja(Figura Fig)
+{
+    for(int i=0;i<Fig.getSize();i++)
+    {
+    if(Fig[i].z>=90)
+    {
+        return true;
+    }
+    }
+return false;
+}

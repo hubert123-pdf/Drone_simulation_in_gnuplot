@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 #include <iomanip>
 #include "Wektor3D.hh"
 #include "Dron.hh"
@@ -7,8 +8,9 @@
 #include "Dno.hh"
 
 using namespace std;
+
 /*
-* Myswietla Menu
+* Myswietlanie Menu
 */
 void WyswietlMenu();
 
@@ -18,6 +20,7 @@ int main()
  * Inicjalizacja Sceny
  */
  char tmp;
+ Scena Scena;
  Dno Dno;
  Powierzchnia Fala;
  Dron Podwodniak;
@@ -29,13 +32,13 @@ int main()
  Dno.setDno();
  
 /*
- *Wyswyietanie Sceny z plików
+ * Wyswyietanie Sceny z plików
  */
  otwarcie_plikow_przeszkod(Obiekty);
  otwarcie_pliku_dron(Podwodniak);
  otwarcie_pliku_fala(Fala);
  otwarcie_pliku_dno(Dno);
- StworzScene();
+ Scena.StworzScene();
  WyswietlMenu();
 
 /*
@@ -43,27 +46,39 @@ int main()
 */
  while(1)
 {
+    cout<<"Twoj wybor --> ";
     cin>>tmp;
     /*
-    * Zadawanie ruchu a następnie powne wyswietlenie sceny
+    * Zadawanie ruchu a następnie powne wyswietlenie sceny z animacją drona
+    * oraz zatrzymanie go w przypadku kolizji.
     */
     if(tmp=='r')
     {
+    Podwodniak.PrzesunDrona();
+    for(int i=1;i<200;i++)
+    {
     zadajRuch(Podwodniak);
-    if(sprawdzkolizja1faza(Podwodniak))
-    break;
     otwarcie_pliku_dron(Podwodniak);
-    aktualizujScene(); 
+    Scena.aktualizujScene(); 
+    usleep(8000);
+    if(sprawdzKolizja(Podwodniak,Dno,Fala,Obiekty))
+    {
+    ZatrzymajDrona(Podwodniak);
+    otwarcie_pliku_dron(Podwodniak);
+    break;
+    }
+    }
     }
 
     if(tmp=='o')
+    {
     /*
     * obrót drona o zadany kąt a następnie wyswietlenie sceny
     */
-    {
+    Podwodniak.obrocDrona();
     zmianaOrientacji(Podwodniak);
     otwarcie_pliku_dron(Podwodniak);
-    aktualizujScene(); 
+    Scena.aktualizujScene(); 
     }
      /*
      * ponowne wyswietlenie menu
@@ -85,8 +100,9 @@ return 0;
 
 void WyswietlMenu()
 {
-cout<<endl<<endl<<"r-zadaj ruch na wprost"<<endl
+cout<<endl<<endl
+ <<"r-zadaj ruch na wprost"<<endl
  <<"o-zadaj zmiane orientacji"<<endl
- <<"m-wyswietl menu"<<endl<<endl
- <<"k-koniec działania programu"<<endl;
+ <<"m-wyswietl menu"<<endl
+ <<"k-koniec działania programu"<<endl<<endl;
 }

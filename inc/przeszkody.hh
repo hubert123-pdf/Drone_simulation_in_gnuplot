@@ -17,6 +17,8 @@ class Przeszkody:public Figura
     Figura sciana[2];
 
 public:
+double promienBlok1();
+Przeszkody():Figura(){}
 /*
 * Dostęp do pierwszego pręta
 */
@@ -61,5 +63,6 @@ void setPrzeszkody();
 * Operator wypisania dla klasy przeszkody
 */
 std::ostream& operator<<(std::ostream &Str,const Przeszkody pret);
+bool CzyKolizja(Figura Fig);
 
 #endif
