@@ -22,7 +22,10 @@ Figura getFigura2(int index)const
 * Modół ustawiający wartośći wierzchołków fali
 */
 void setfale();
-
+/*
+* Metoda badająca czy dron wynurzył się z wody
+*/
+bool CzyKolizja(Figura Fig);
 };
 /*
 * funkcja wypisująca wartości klasy Powierzchnia

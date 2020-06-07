@@ -8,8 +8,9 @@
 #include "Dno.hh"
 
 using namespace std;
+
 /*
-* Myswietla Menu
+* Myswietlanie Menu
 */
 void WyswietlMenu();
 
@@ -31,7 +32,7 @@ int main()
  Dno.setDno();
  
 /*
- *Wyswyietanie Sceny z plików
+ * Wyswyietanie Sceny z plików
  */
  otwarcie_plikow_przeszkod(Obiekty);
  otwarcie_pliku_dron(Podwodniak);
@@ -45,21 +46,27 @@ int main()
 */
  while(1)
 {
+    cout<<"Twoj wybor --> ";
     cin>>tmp;
     /*
     * Zadawanie ruchu a następnie powne wyswietlenie sceny z animacją drona
+    * oraz zatrzymanie go w przypadku kolizji.
     */
     if(tmp=='r')
     {
     Podwodniak.PrzesunDrona();
-    for(int i=1;i<100;i++)
+    for(int i=1;i<200;i++)
     {
     zadajRuch(Podwodniak);
     otwarcie_pliku_dron(Podwodniak);
     Scena.aktualizujScene(); 
     usleep(8000);
-    if(sprawdzkolizja1faza(Podwodniak))
+    if(sprawdzKolizja(Podwodniak,Dno,Fala,Obiekty))
+    {
+    ZatrzymajDrona(Podwodniak);
+    otwarcie_pliku_dron(Podwodniak);
     break;
+    }
     }
     }
 
@@ -96,6 +103,6 @@ void WyswietlMenu()
 cout<<endl<<endl
  <<"r-zadaj ruch na wprost"<<endl
  <<"o-zadaj zmiane orientacji"<<endl
- <<"m-wyswietl menu"<<endl<<endl
- <<"k-koniec działania programu"<<endl;
+ <<"m-wyswietl menu"<<endl
+ <<"k-koniec działania programu"<<endl<<endl;
 }

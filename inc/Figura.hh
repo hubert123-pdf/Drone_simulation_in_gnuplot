@@ -12,6 +12,7 @@ class Figura
   * problemów z figurami o różnej ilości wierzcholków
   */
  std::vector<Wektor3D> wierzcholki;
+
 public:
 Figura()=default;
 
@@ -45,8 +46,6 @@ int getSize() const
 {
   return wierzcholki.size();
 }
-
-virtual bool CzyKolizja()=0;
 
 };
 /*

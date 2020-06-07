@@ -1,7 +1,7 @@
 #ifndef DRON_HH
 #define DRON_HH
 #include "Figura.hh"
-
+#include "przeszkody.hh"
 #define PI 3.14159265
 
 
@@ -22,9 +22,17 @@ Wektor3D WektorPrzemieszczenia={0,0,0};
 Wektor3D WektorPrzesuniecia;
 
 double kat2D=0;
-double kat3D=0;
+double kat3D;
 
 public:
+/*
+* metoda zwracająca wartość promienia drona 
+*/
+double promienDrona()
+{
+  double R;
+  return R=10*sqrt(2);
+}
 Dron():Figura(){}
 /*
 *operator łątwiejszego dostępu do wierzcholków
@@ -131,14 +139,19 @@ void setRuchDronaz(int index,int index2,double wartosc)
 * Ustawienie drona do położenia początkowego
 */
 void setDron0();
-
+/*
+* metda ustawiająca wartości do przsuniecia drona
+*/
 void PrzesunDrona();
+/*
+* metoda ustawiająca wartośći do obrotu drona
+*/
 void obrocDrona();
+/*
+* metoda badająca czy zachodzi kolizja między przeszkodami
+*/
+bool CzyKolizja(Figura Fig);
 
-bool CzyKolizja()
-{
-return true;
-}
 };
 
 /*
@@ -157,6 +170,8 @@ void zmianaOrientacji(Dron &Dron);
 * Funkcja wykonująca Ruch Drona
 */
 void zadajRuch(Dron& Dron);
-
-
+/*
+* Funkcja ustawiająca drona w odległości od przeszkody umożliwiającej cofnięcie
+*/
+void ZatrzymajDrona(Dron &Dron);
 #endif

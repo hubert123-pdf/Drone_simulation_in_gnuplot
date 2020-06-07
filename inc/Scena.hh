@@ -14,8 +14,8 @@
 class Scena
 {
 PzG::LaczeDoGNUPlota  Lacze;
-    public:
 
+public:
 /*
 * Stworzenie sceny wraz z przeszkodami
 */
@@ -35,9 +35,9 @@ void otwarcie_plikow_przeszkod(Przeszkody przeszkody);
 
 
 /*
-* sprawdzenie kolizji z dnem i wypłynięcie drona 
+* sprawdzenie czy doszło do klizji
 */
-bool sprawdzkolizja1faza(Dron Dron);
 
+bool sprawdzKolizja(Dron Dron,Dno Dno,Powierzchnia Fala, Przeszkody obietky);
 
 #endif 

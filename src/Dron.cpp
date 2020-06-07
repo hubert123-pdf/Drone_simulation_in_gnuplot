@@ -254,10 +254,11 @@ void Dron::PrzesunDrona()
   double x,y;
   std::cout<<std::endl<<"Podaj wartosc przesuniecia: ";
   std::cin>>x;
-  std::cout<<std::endl<<"Podaj wartosc kata rzesuniecia (gora/dol): ";
+  std::cout<<std::endl<<"Podaj wartosc kata przesuniecia (gora/dol): ";
   std::cin>>y;
-
-setWektorPrzesuniecia(x/100,y);
+ 
+setWektorPrzesuniecia(x/200,y);
+setKat3D(y);
 }
 void zadajRuch(Dron &Dron)
   {
@@ -283,4 +284,81 @@ std::ostream& operator<<(std::ostream &Str,Dron Dron)
        Str<<Dron.getFigura(i)<<"#\n\n";
     }
     return Str;
+}
+void ZatrzymajDrona(Dron &Dron)
+{
+  Dron.setWektorPrzesuniecia(-0.5,0);
+  for(int i=0;i<19;i++)
+  {
+    for(int j=0;j<4;j++)
+    {
+    double a,b,c;
+    a=Dron.getFigura(i).getWierzcholki(j).x+Dron.getWektorPrzesuniecia().x;
+    b=Dron.getFigura(i).getWierzcholki(j).y+Dron.getWektorPrzesuniecia().y;
+    c=Dron.getFigura(i).getWierzcholki(j).z+Dron.getWektorPrzesuniecia().z;
+    Dron.setRuchDronax(i,j,a);
+    Dron.setRuchDronay(i,j,b);
+    Dron.setRuchDronaz(i,j,c);
+    }
+  }
+  Dron.setWektorPrzemieszczenia();
+}
+bool Dron::CzyKolizja(Figura Fig)
+{
+
+  double odleglosc1; //blok1
+  double odleglosc2; //pret1
+  double odleglosc3; //pret2
+  double odleglosc4; //sciana
+  double odleglosc5; //blok
+  odleglosc1=sqrt((WektorPrzemieszczenia.x-30)*(WektorPrzemieszczenia.x-30)+
+  (WektorPrzemieszczenia.y+42)*(WektorPrzemieszczenia.y+42));
+
+  odleglosc2=sqrt((WektorPrzemieszczenia.x-60)*(WektorPrzemieszczenia.x-60)+
+  (WektorPrzemieszczenia.y+30)*(WektorPrzemieszczenia.y+30));
+
+  odleglosc3=sqrt((WektorPrzemieszczenia.x-20)*(WektorPrzemieszczenia.x-20)+
+  (WektorPrzemieszczenia.z-50)*(WektorPrzemieszczenia.y-50));
+
+ 
+  odleglosc5=sqrt((WektorPrzemieszczenia.x-65)*(WektorPrzemieszczenia.x-65)+
+  (WektorPrzemieszczenia.y-30)*(WektorPrzemieszczenia.y-30));
+
+  if((promienDrona()+(10*sqrt(2)))>odleglosc1)
+  return true;
+
+  if(promienDrona()>odleglosc2)
+  return true;
+
+  for(int i=0;i<19;i++)
+  {
+    for(int j=0;j<4;j++)
+    {
+      if(promienDrona()>odleglosc3&&getFigura(i).getWierzcholki(j).y>=45&&getFigura(i).getWierzcholki(j).z>=50)
+      return true;
+    }
+  }
+  for(int i=0;i<19;i++)
+  {
+    for(int j=0;j<4;j++)
+    {
+      for(int k=-30;k<30;k++)
+      {
+       odleglosc4=sqrt((WektorPrzemieszczenia.y-55)*(WektorPrzemieszczenia.y-55)+
+       (WektorPrzemieszczenia.x-k)*(WektorPrzemieszczenia.x-k));
+      if(odleglosc4<promienDrona()&&getFigura(i).getWierzcholki(j).z<=0)
+              return true;
+      }
+    }
+  }
+  for(int i=0;i<19;i++)
+  {
+    for(int j=0;j<4;j++)
+    {
+  if(promienDrona()+15*sqrt(2)>odleglosc5&&getFigura(i).getWierzcholki(j).z<=-20)
+  return true;
+    }
+  }
+  return false;
+  
 }

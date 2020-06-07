@@ -20,6 +20,10 @@ Figura getFigura(int index)const
 * Modół ustawiający dno 
 */
 void setDno();
+/*
+* Metoda badająca czy zaszła kolizja drona z dnem 
+*/
+bool CzyKolizja(Figura Fig);
 };
 /*
 * Operator wypisujący dla klasy Dno

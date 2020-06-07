@@ -85,8 +85,8 @@ void Scena::StworzScene()
   //Lacze.DodajNazwePliku("bryly/sruba1.dat");
   Lacze.ZmienTrybRys(PzG::TR_3D);
   Lacze.Inicjalizuj(); 
-  Lacze.UstawZakresX(-50, 100);
-  Lacze.UstawZakresY(-50, 100);
+  Lacze.UstawZakresX(-100, 100);
+  Lacze.UstawZakresY(-100, 100);
   Lacze.UstawZakresZ(-100, 100);
   Lacze.UstawRotacjeXZ(79,296);
   Lacze.Rysuj(); 
@@ -106,23 +106,28 @@ void Scena::aktualizujScene()
   Lacze.Rysuj();  
   Lacze.UsunWszystkieNazwyPlikow();
 }
-bool sprawdzkolizja1faza(Dron Dron)
+
+bool sprawdzKolizja(Dron Dron, Dno Dno,Powierzchnia Fala,Przeszkody Obiekty)
 {
-for(int i=0;i<5;i++)
+  for(int i=0;i<18;i++)
   {
-    for(int j=0;j<4;j++)
-    {
-      if(Dron[i][j].z>=100)
-      {
-        std::cout<<std::endl<<"Dron wypłynął na powierzchnie";
-        return true;
-      }
-      if(Dron[i][j].z<=-100)
-      {
-       std::cout<<std::endl<<"Dron uderzył w dno";
-       return true;
-      }
-    }
+  if(Dno.CzyKolizja(Dron.getFigura(i)))
+  {
+  std::cout<<"Mozliwosc kolizji... zatrzymanie drona."<<std::endl;
+  return true;
+  }
+  
+  if(Dron.CzyKolizja(Dron.getFigura(i)))
+  {
+  std::cout<<"Mozliwosc kolizji... zatrzymanie drona."<<std::endl;
+  return true;
+  }
+  if(Fala.CzyKolizja(Dron.getFigura(i)))
+  {
+  std::cout<<"Dron wyplynal z wody..."<<std::endl;
+  return true;
+  }
+
   }
   return false;
 }
