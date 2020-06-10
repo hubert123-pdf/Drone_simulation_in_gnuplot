@@ -1,3 +1,7 @@
+/*!
+ * \file
+ * \brief Zawiera definicje metod klasy Scena oraz funkcji w tym pliku zawartych
+ */
 #include "Scena.hh"
 
 void otwarcie_pliku_dron(Dron Podwodniak)

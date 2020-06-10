@@ -1,4 +1,9 @@
-#include "Figura.hh"
+
+/*!
+ * \file
+ * \brief Zawiera rozwinięcie operatora Wypisania dla klasy Figura
+ */
+ #include "Figura.hh"
 
 std::ostream& operator<<(std::ostream &Strm, Figura Fig)
 {

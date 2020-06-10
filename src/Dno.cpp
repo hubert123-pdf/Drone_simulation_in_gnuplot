@@ -1,3 +1,7 @@
+/*!
+ * \file
+ * \brief Zawiera definicje metod Dno
+ */
 #include"Dno.hh"
 void Dno::setDno()
 {
