@@ -1,57 +1,50 @@
 #include <iostream>
 #include <unistd.h>
 #include <iomanip>
-#include "Wektor3D.hh"
-#include "Dron.hh"
 #include "Scena.hh"
-#include "Figura.hh"
-#include "Dno.hh"
+
+/*!
+ * \file
+ * \brief Główny plik w którym następuje sterowanie dronem oraz inicjalizacja sceny 
+ */
 
 using namespace std;
 
-/*
-* Myswietlanie Menu
+/*!
+* \brief Myswietlanie możliwych opcji
 */
 void WyswietlMenu();
 
 int main()
 {
-/*
- * Inicjalizacja Sceny
- */
+
  char tmp;
+
  Scena Scena;
  Dno Dno;
  Powierzchnia Fala;
  Dron Podwodniak;
  Przeszkody Obiekty;
 
+
  Obiekty.setPrzeszkody();
  Podwodniak.setDron();
  Fala.setfale();
  Dno.setDno();
  
-/*
- * Wyswyietanie Sceny z plików
- */
+
  otwarcie_plikow_przeszkod(Obiekty);
  otwarcie_pliku_dron(Podwodniak);
  otwarcie_pliku_fala(Fala);
  otwarcie_pliku_dno(Dno);
+
+
  Scena.StworzScene();
  WyswietlMenu();
-
-/*
-* Działanie programu do momentu przerwania
-*/
  while(1)
 {
     cout<<"Twoj wybor --> ";
     cin>>tmp;
-    /*
-    * Zadawanie ruchu a następnie powne wyswietlenie sceny z animacją drona
-    * oraz zatrzymanie go w przypadku kolizji.
-    */
     if(tmp=='r')
     {
     Podwodniak.PrzesunDrona();
@@ -72,24 +65,17 @@ int main()
 
     if(tmp=='o')
     {
-    /*
-    * obrót drona o zadany kąt a następnie wyswietlenie sceny
-    */
     Podwodniak.obrocDrona();
     zmianaOrientacji(Podwodniak);
     otwarcie_pliku_dron(Podwodniak);
     Scena.aktualizujScene(); 
     }
-     /*
-     * ponowne wyswietlenie menu
-     */
+
     if(tmp=='m')
     {
     WyswietlMenu();
     }
-    /*
-    * koniec programu
-    */
+
     if(tmp=='k')
     break;
     

@@ -1,4 +1,9 @@
-#include "Powierzchnia.hh"
+
+/*!
+ * \file
+ * \brief Zawiera definicje metod klasy Powierzchnia
+ */
+ #include "Powierzchnia.hh"
 
 void Powierzchnia::setfale()
 {

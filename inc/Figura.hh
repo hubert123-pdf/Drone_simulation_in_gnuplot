@@ -5,9 +5,24 @@
 #include <math.h>
 #include <memory>
 
+/*!
+*\file 
+*\brief Zawiera definicję klasy Figura
+*
+* Plik zawiera definicję klasy Figura która 
+* pomaga tworzyć wierzchołki figury. 
+*/
+
+/*!
+*\brief Klasa umożliwiająca tworzenie punktów na osi 3D
+*
+* 
+*/
 class Figura
 {
-  /*
+  /*!
+  * \brief Tablica wierchołków na osi 3D tworzących odpowiednie płaszczyzny 
+  *
   * wierzholki jako szablon vector w celu uniknięcia 
   * problemów z figurami o różnej ilości wierzcholków
   */
@@ -16,40 +31,50 @@ class Figura
 public:
 Figura()=default;
 
-/*inc/przeszkody.hh:33:12: error: cannot allocate an object of abstract type ‘Figura’
-     return Pret2;
-* operator umożliwiające łatwiejsze korzystanie z tablicy
+/*!
+*\brief Operator umożliwiający łatwiejsze korzystanie z tablicy
+*
+*Operator indeksowania umożliwiający łatwiejsze korzystanie z tablicy
+*\param index - decyduje który element z tablicy zostanie zwrócony
 */
 Wektor3D operator[](int index)
 {
   return wierzcholki[index];
 }
 
-/*
-* metoda zwracająca pewien element tablicy
+/*!
+* \brief Metoda zwracająca pewien element tablicy
+*
+* Metoda zwracająca oczekiwany element tablicy
+* \param i - decyduje który element z tablicy zostanie zwrócony
 */
 Wektor3D &getWierzcholki(int i)
 {
     return wierzcholki[i];
 }
-/*
-* metoda zwracająca szystkie punkty wiercholka
+/*!
+* \brief Metoda zwracająca szystkie punkty wierzchołka
+*
+* Metoda zwracająca szablon typu vector jako tablice wierchołków
 */ 
 std::vector<Wektor3D>& getWierzcholki()
 {
   return wierzcholki;
 }
-/*
-* metoda zwracająca rozmiar szablonu
+/*!
+* \brief Metoda zwracająca rozmiar szablonu
+*
+* Metoda zwracająca rozmiar szablonu
 */
 int getSize() const
 {
   return wierzcholki.size();
 }
-
 };
-/*
-* operator wypisywania klasy Figura 
+/*!
+* \brief Operator wypisywania klasy Figura 
+*
+* Operator wypisywania wszystkich elementow klasy Figura
 */
 std::ostream& operator<<(std::ostream &Strm,Figura Fig);
 #endif

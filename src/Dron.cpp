@@ -1,4 +1,8 @@
-#include "Dron.hh"
+/*!
+ * \file
+ * \brief Zawiera definicje metod klasy Dron
+ */
+ #include "Dron.hh"
 
 void Dron::setDron()
 {

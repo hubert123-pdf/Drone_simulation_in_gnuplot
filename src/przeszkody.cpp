@@ -1,3 +1,7 @@
+/*!
+ * \file
+ * \brief Zawiera definicje metod klasy przeszkody
+ */
 #include "przeszkody.hh"
 void Przeszkody::setPrzeszkody()
 {
